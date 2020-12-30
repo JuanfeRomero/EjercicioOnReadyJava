@@ -8,10 +8,9 @@ public class Main {
         
         datosVehiculos(vehiculos);
         System.out.println("=============================");
-        // conseguirCaro(vehiculos);
-        // conseguirBarato(vehiculos);
-        // modeloConY(vehiculos);
-        infoEspecifica(vehiculos);
+        conseguirCaro(vehiculos);
+        conseguirBarato(vehiculos);
+        modeloConY(vehiculos);
         System.out.println("=============================");
         vehiculosOrdenadosPorPrecio(vehiculos);
 
@@ -37,36 +36,13 @@ public class Main {
             System.out.println(lista.get(i).getInfoVehiculo());
         }
     }
-    public static void infoEspecifica(List<Vehiculo> lista){
-        double valorCaro = 0;
-        double valorBarato = 999999999;
-        String vehiculoCaro = "";
-        String vehiculoBarato = "";
-        String vehiculoY = "";
-        for(int i=0; i<lista.size(); i++){
-            double valorActual = lista.get(i).getPrecio();
-            if(valorActual > valorCaro){
-                vehiculoCaro = lista.get(i).getMarcaYModelo();
-                valorCaro = valorActual;
-            }
-            if(lista.get(i).getPrecio() < valorBarato){
-                vehiculoBarato = lista.get(i).getMarcaYModelo();
-                valorBarato = valorActual;
-            }
-            if(lista.get(i).getModelo().toLowerCase().indexOf("y") > -1){
-                vehiculoY = String.format("%s %s", lista.get(i).getMarcaYModelo(), lista.get(i).getFormatoPrecio());
-            }
-        }
-        System.out.println("Vehículo más caro: "+ vehiculoCaro);
-        System.out.println("Vehículo más barato: "+ vehiculoBarato);
-        System.out.println("Vehículo que contiene en el modelo la letra ‘Y’: " + vehiculoY); 
-    }
-/*
+
     public static void conseguirCaro(List<Vehiculo> lista){
         double valorActual = 0;
         String vehiculoActual = "";
         for(int i=0; i<lista.size(); i++){
             if(lista.get(i).getPrecio() > valorActual){
+                valorActual = lista.get(i).getPrecio();
                 vehiculoActual = lista.get(i).getMarcaYModelo();
             }
         }
@@ -78,6 +54,7 @@ public class Main {
         String vehiculoActual = "";
         for(int i=0; i<lista.size(); i++){
             if(lista.get(i).getPrecio() < valorActual){
+                valorActual = lista.get(i).getPrecio();
                 vehiculoActual = lista.get(i).getMarcaYModelo();
             }
         }
@@ -92,7 +69,7 @@ public class Main {
             }
         }
         System.out.println("Vehículo que contiene en el modelo la letra ‘Y’: " + vehiculoActual); 
-    } */
+    }
 
     public static void vehiculosOrdenadosPorPrecio(List<Vehiculo> lista){
         List<String> vehiculosOrdenados = new ArrayList<>();
